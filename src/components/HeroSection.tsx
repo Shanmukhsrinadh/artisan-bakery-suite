@@ -1,9 +1,13 @@
 import heroBg from "@/assets/hero-bakery.jpg";
+import { useCallback } from "react";
 
 export default function HeroSection() {
+  const animateRef = useCallback((el: HTMLElement | null) => {
+    if (el) el.classList.add("animate-fade-up");
+  }, []);
+
   return (
     <section id="hero" className="relative flex min-h-screen items-center justify-center overflow-hidden">
-      {/* Background image */}
       <div className="absolute inset-0">
         <img
           src={heroBg}
@@ -15,35 +19,32 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-b from-foreground/60 via-foreground/40 to-foreground/70" />
       </div>
 
-      {/* Content */}
       <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
         <p
           className="mb-6 text-xs font-medium uppercase tracking-[0.35em] text-primary-foreground/70"
           style={{ animationDelay: "0.2s", opacity: 0 }}
-          // eslint-disable-next-line react/no-unknown-property
-          onAnimationEnd={() => {}}
-          ref={(el) => el && el.classList.add("animate-fade-up")}
+          ref={animateRef}
         >
           Artisan Bakery &bull; Est. 1987
         </p>
         <h1
           className="font-serif text-5xl font-light leading-[1.1] text-primary-foreground sm:text-7xl lg:text-8xl"
           style={{ animationDelay: "0.4s", opacity: 0 }}
-          ref={(el) => el && el.classList.add("animate-fade-up")}
+          ref={animateRef}
         >
           Maison Dorée
         </h1>
         <p
           className="mx-auto mt-6 max-w-lg text-base font-light leading-relaxed text-primary-foreground/80 sm:text-lg"
           style={{ animationDelay: "0.6s", opacity: 0 }}
-          ref={(el) => el && el.classList.add("animate-fade-up")}
+          ref={animateRef}
         >
           Where every creation is a masterpiece — handcrafted daily with the finest ingredients and timeless French tradition.
         </p>
         <div
           className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
           style={{ animationDelay: "0.8s", opacity: 0 }}
-          ref={(el) => el && el.classList.add("animate-fade-up")}
+          ref={animateRef}
         >
           <a
             href="#products"
@@ -60,7 +61,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
         <div className="h-10 w-[1px] bg-primary-foreground/40" />
       </div>
