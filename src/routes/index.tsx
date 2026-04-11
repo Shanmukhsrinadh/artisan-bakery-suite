@@ -1,19 +1,48 @@
 import { createFileRoute } from "@tanstack/react-router";
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
+import AboutSection from "@/components/AboutSection";
+import ProductsSection from "@/components/ProductsSection";
+import MenuSection from "@/components/MenuSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import GallerySection from "@/components/GallerySection";
+import ContactSection from "@/components/ContactSection";
+import Footer from "@/components/Footer";
 
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      { title: "Maison Dorée — Artisan Bakery & Pâtisserie" },
+      {
+        name: "description",
+        content:
+          "Handcrafted French pastries, artisan breads, and signature cakes since 1987. Visit our boutique bakery in Paris.",
+      },
+      { property: "og:title", content: "Maison Dorée — Artisan Bakery & Pâtisserie" },
+      {
+        property: "og:description",
+        content:
+          "Handcrafted French pastries, artisan breads, and signature cakes since 1987.",
+      },
+    ],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
-    </div>
-  );
-}
-
 function Index() {
-  return <PlaceholderIndex />;
+  return (
+    <>
+      <Navbar />
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <ProductsSection />
+        <MenuSection />
+        <TestimonialsSection />
+        <GallerySection />
+        <ContactSection />
+      </main>
+      <Footer />
+    </>
+  );
 }
