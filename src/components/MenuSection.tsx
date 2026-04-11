@@ -1,3 +1,5 @@
+import ScrollReveal from "@/components/ScrollReveal";
+
 const menuCategories = [
   {
     name: "Breads",
@@ -41,38 +43,42 @@ export default function MenuSection() {
   return (
     <section id="menu" className="bg-background py-24 sm:py-32">
       <div className="mx-auto max-w-5xl px-6 lg:px-8">
-        <div className="text-center">
-          <p className="text-xs font-medium uppercase tracking-[0.3em] text-muted-foreground">
-            What We Offer
-          </p>
-          <h2 className="mt-4 font-serif text-4xl font-light text-foreground sm:text-5xl">
-            Featured Menu
-          </h2>
-          <div className="mx-auto mt-2 h-px w-16 bg-gold" />
-        </div>
+        <ScrollReveal>
+          <div className="text-center">
+            <p className="text-xs font-medium uppercase tracking-[0.3em] text-muted-foreground">
+              What We Offer
+            </p>
+            <h2 className="mt-4 font-serif text-4xl font-light text-foreground sm:text-5xl">
+              Featured Menu
+            </h2>
+            <div className="mx-auto mt-2 h-px w-16 bg-gold" />
+          </div>
+        </ScrollReveal>
 
         <div className="mt-16 grid gap-12 sm:grid-cols-2">
-          {menuCategories.map((category) => (
-            <div key={category.name}>
-              <h3 className="font-serif text-2xl font-medium text-foreground">
-                {category.name}
-              </h3>
-              <div className="mt-6 space-y-5">
-                {category.items.map((item) => (
-                  <div key={item.name} className="group flex items-end justify-between">
-                    <div className="flex items-end gap-2">
-                      <span className="text-sm text-foreground transition-colors group-hover:text-gold">
-                        {item.name}
+          {menuCategories.map((category, i) => (
+            <ScrollReveal key={category.name} delay={i * 0.1}>
+              <div>
+                <h3 className="font-serif text-2xl font-medium text-foreground">
+                  {category.name}
+                </h3>
+                <div className="mt-6 space-y-5">
+                  {category.items.map((item) => (
+                    <div key={item.name} className="group flex items-end justify-between">
+                      <div className="flex items-end gap-2">
+                        <span className="text-sm text-foreground transition-colors group-hover:text-gold">
+                          {item.name}
+                        </span>
+                        <span className="mb-1 flex-1 border-b border-dotted border-border" />
+                      </div>
+                      <span className="ml-4 text-sm font-medium text-muted-foreground">
+                        {item.price}
                       </span>
-                      <span className="mb-1 flex-1 border-b border-dotted border-border" />
                     </div>
-                    <span className="ml-4 text-sm font-medium text-muted-foreground">
-                      {item.price}
-                    </span>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>
